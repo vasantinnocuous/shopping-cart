@@ -1,0 +1,67 @@
+<div type="pills" class="productsSet">
+<uib-tabset class="productsTabset">
+<uib-tab ng-repeat = "product in productsSet.products" class="productsTab">
+	<uib-tab-heading class="transclude productHeading">
+	<ul class="nav" ng-class="{'nav-stacked': vertical, 'nav-justified': justified}">
+	<li>{{product.productname}}</li>
+	<li>{{product.cost}} €</li>		
+	</ul>
+	</uib-tab-heading>
+	<div class="centerDiv">
+	<ul class="superImpFeatures">
+		<li ng-repeat="superImpFeature in product.description.superImpFeatures">
+			{{superImpFeature}}
+			<span ng-hide="product.description.superImpFeatures.length == $index + 1" class="glyphicon glyphicon-plus orangeColor"></span> 
+		</li>
+	</ul>
+	</div>
+	<ul class="impFeatures">
+
+		<li ng-repeat="impFeature in product.description.impFeatures">
+		<span class="glyphicon glyphicon-ok whiteColor"></span>
+			{{impFeature}}
+		</li>
+	</ul>
+	<ul class="norFeatures">
+		<li ng-repeat="norFeature in product.description.norFeatures">
+		<span class="glyphicon glyphicon-ok orangeColor"></span>
+		{{norFeature}}
+		</li>
+	</ul>	
+	<button ng-click="addToCart(product)" class="addToCart">Add to cart</button>
+</uib-tab>
+</uib-tabset>
+</div>
+<div class="cartList container" ng-show="cart.items.length > 0">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Details</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr ng-repeat ="item in cart.items">
+        <td>{{item.productname}}</td>
+        <td>{{item.description.superImpFeatures[0]}}</td>
+        <td>
+        <button ng-click="addQty(item)">+</button>
+        <input type="number" ng-model="item.qty">
+        <button ng-click="removeQty(item)">-</button>
+        </td>
+        <td>{{item.qty * item.cost}}</td>
+        <td>
+        [<a href ng:click="removeItem($index)">X</a>]
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<div class="row">
+	<div class="-col-md-4">
+		Total: {{total()}} €
+	</div>
+</div>
+</div>

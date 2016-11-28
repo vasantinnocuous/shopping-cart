@@ -1,0 +1,57 @@
+@import "bootstrap";
+@import "bootstrap/theme";
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.productsSet {
+	margin: 10px;
+
+}
+
+.cartList{
+	margin:30px;
+}
+
+.nav-tabs > li.active > a {
+	color: #fff;
+	background-color: #337ab7;
+}
+.nav-tabs > li > a {
+ 	color: #fff;
+	background-color: #98bfe4;
+}
+ul{
+	list-style: none; /* Remove list bullets */    
+}
+.whiteColor{
+	color: #fff;
+}
+.orangeColor{
+	color: #f18713;
+}
+.impFeatures{
+background-color:#f18713;
+
+}
+
+ div.centerDiv {
+        width: 100%;
+        text-align: center;        
+    }
+    ul.superImpFeatures {
+        margin: 2px auto;
+        line-height: 1.4;
+        padding-left: 0;
+    }
+    .superImpFeatures li {
+        display: inline;
+        text-align: center;
+    }
+
+
+
